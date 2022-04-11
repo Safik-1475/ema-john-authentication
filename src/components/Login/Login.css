@@ -1,0 +1,90 @@
+.form-container {
+    width: 500px;
+    background: #FFFFFF;
+    border: 1px solid #95A0A7;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin: 0 auto;
+    padding: 20px 20px;
+    font-family: 'tahoma';
+    display: flex;
+    justify-content: center;
+}
+
+.form-container .login-title {
+    font-family: 'tahoma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 42px;
+    letter-spacing: 0.0025em;
+    color: #2A414F;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin: 0 0 5px 5px;
+}
+
+.input-group input {
+    font-size: 24px;
+    width: 415px;
+    height: 54px;
+    border: 1px solid rgba(149, 160, 167, 1);
+    border-radius: 5px;
+    padding: 0px 2px;
+}
+
+.submit-login {
+    width: 415px;
+    height: 54px;
+    border: none;
+    background-color: #FFE0B3;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+    color: #2A414F;
+}
+
+.sign-info {
+    font-size: 15px;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.sign-btn {
+    text-decoration: none;
+    color: #FF9900;
+
+}
+
+.wrapper {
+    text-align: center;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.or-text {
+    width: 150px;
+    border: .1px solid rgba(149, 160, 167, 1);
+}
+
+.google-btn {
+    width: 415px;
+    height: 54px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+    color: #2A414F;
+    background: none;
+    border: 1px solid rgba(149, 160, 167, 1);
+}
