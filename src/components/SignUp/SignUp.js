@@ -1,6 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from './../../firebase-init';
+
 
 const SignUp = () => {
     // declare useState 
@@ -8,11 +11,19 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [form, setForm] = useState();
-    const [error, setError] = useState('')
+    const [formError, setError] = useState('')
+    const navigate = useNavigate()
 
-    console.log(email)
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
 
-
+    if (user) {
+        navigate('/shop')
+    }
     // email handler 
     const handleEmailBlur = event => {
         setEmail(event.target.value)
@@ -27,11 +38,17 @@ const SignUp = () => {
     }
     // handle form submit
     const handleOnSubmitBlur = event => {
-        setForm(event.preventDefault())
+        event.preventDefault();
         if (password !== confirmPassword) {
             setError("Your password didn't match")
             return
         }
+        else if (password.length < 6) {
+            setError("Password must be 6 characters")
+            return
+        }
+        createUserWithEmailAndPassword(email, password)
+
     }
 
     return (
@@ -52,7 +69,7 @@ const SignUp = () => {
                             <label htmlFor="confirmPassword">Confirm Password</label>
                             <input onBlur={handleConfirmPasswordBlur} type="password" name="confirmPassword" id="confirmPassword" required />
                         </div>
-                        <p style={{ color: 'red', margin: '10px 5px' }}>{error}</p>
+                        <p style={{ color: 'red', margin: '10px 5px' }}>{formError}</p>
                         <input className='submit-login' type="submit" value="Login" />
                     </form>
                     <p className='sign-info'>Already have an Account?
@@ -63,7 +80,7 @@ const SignUp = () => {
                         or
                         <div className="or-text"></div>
                     </div>
-                    <button className='google-btn'>Contiune with Google</button>
+                    <button className='google-btn'>Continue with Google</button>
                 </div>
             </div>
         </div>
